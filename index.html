@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+  		<script src="bower_components/requirejs/require.js"></script>
+		<script>
+			requirejs.config({
+				baseUrl: './js/',
+    			paths: {
+      				jquery: '../bower_components/jquery/dist/jquery',
+      				underscore: '../bower_components/underscore/underscore',
+      				backbone: '../bower_components/backbone/backbone',
+      				chaplin: '../bower_components/chaplin/chaplin'
+				}
+    		});
+		</script>
+		<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+		<title>Chaplin - Todo</title>
+	</head>
+	<body>
+		<center>
+			<h1>Todo List</h1>
+			<div>
+				<input type="text" class="new-todo" id="new-todo" placeholder="What do you want to do today?">
+			</div>
+			<div id="table">
+				<table id="todo-list"></table>
+			</div>
+			<div id="action-buttons">
+				<a class="all" href="all">All</a>
+				<a class="active" href="active">Active</a>
+				<a class="completed" href="complete">Completed</a>
+				<a class="clear-completed">Clear completed</a>
+			</div>	
+			<script type="text/template" id="item-template">
+				<td><img class="tick" src="assets/images/green-tick-in-circle-1147519.jpg"></td>
+				<td><input type="text" readonly="true" class="edit" value="<%= name %>"></td>
+				<td><img class="cross" src="assets/images/icon-02-512.png"></td>
+			</script>
+			<script src="js/app.js"></script>
+			<script src="js/routes.js"></script>
+			<script src="js/controllers/base/controller.js"></script>
+			<script src="js/controllers/input-controller.js"></script>
+			<!-- <script src="js/controllers/input-controller.js"></script> -->
+			<script src="js/models/base/model.js"></script>
+			<script src="js/models/base/collection.js"></script>
+			<script src="js/models/todo-collection.js"></script>
+			<script src="js/views/base/collection-view.js"></script>
+			<script src="js/views/base/view.js"></script>
+			<script src="js/models/todo.js"></script>
+			<script src="js/views/input-view.js"></script>
+			<script src="js/views/list-view.js"></script>
+			<script src="js/views/item-view.js"></script>
+			<script src="js/views/table-view.js"></script>
+			<script type="text/javascript">
+	    		require(['application', 'routes'], function(TodoApp, routes) {
+	    			window.TodoApp = new TodoApp({
+	    				routes : routes,
+	    				controllerSuffix: '-controller'
+	    			});
+	  			});
+			</script>
+		</center>
+	</body>
+</html>
