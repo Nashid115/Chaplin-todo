@@ -1,3 +1,4 @@
+//testing
 define('application', [
 	'chaplin',
 	'models/todo-collection'
